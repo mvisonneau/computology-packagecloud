@@ -35,8 +35,10 @@ class packagecloud() {
       'Scientific',
       'OracleLinux',
       'OEL': {
-        package { 'pygpgme':
-          ensure => latest,
+        if $::osreleasemaj > 5 {
+          package { 'pygpgme':
+            ensure => latest,
+          }
         }
       }
       default: {
